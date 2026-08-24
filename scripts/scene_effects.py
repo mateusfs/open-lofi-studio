@@ -745,6 +745,117 @@ def render_water_shimmer(
     )
 
 
+def _find_pendant_lamps(base_array: np.ndarray) -> list[tuple[int, int, int]]:
+    rgb = base_array.astype(np.float32)
+    red = rgb[:, :, 0]
+    green = rgb[:, :, 1]
+    blue = rgb[:, :, 2]
+    brightness = (red + green + blue) / 3.0
+    warm = (
+        (red >= green + 10)
+        & (red >= blue + 24)
+        & (brightness >= 120)
+        & (brightness <= 245)
+    )
+    warm[:, int(WIDTH * 0.62) :] = False
+    warm[int(HEIGHT * 0.58) :, :] = False
+    warm[: int(HEIGHT * 0.05), :] = False
+    labeled = np.zeros(warm.shape, dtype=np.int32)
+    label = 0
+    lamps: list[tuple[int, int, int]] = []
+    height, width = warm.shape
+    for y in range(height):
+        for x in range(width):
+            if not warm[y, x] or labeled[y, x]:
+                continue
+            label += 1
+            stack = [(y, x)]
+            pixels: list[tuple[int, int]] = []
+            labeled[y, x] = label
+            while stack:
+                cy, cx = stack.pop()
+                pixels.append((cx, cy))
+                for ny, nx in ((cy - 1, cx), (cy + 1, cx), (cy, cx - 1), (cy, cx + 1)):
+                    if 0 <= ny < height and 0 <= nx < width and warm[ny, nx] and labeled[ny, nx] == 0:
+                        labeled[ny, nx] = label
+                        stack.append((ny, nx))
+            if len(pixels) < 80 or len(pixels) > 8000:
+                continue
+            xs = [point[0] for point in pixels]
+            ys = [point[1] for point in pixels]
+            lamps.append((int(sum(xs) / len(xs)), int(sum(ys) / len(ys)), 72))
+    return sorted(lamps, key=lambda item: item[0])[:3]
+
+
+def render_pendant_glow(
+    base_frame: Image.Image,
+    frame_index: int,
+    total_frames: int,
+    base_array: np.ndarray,
+) -> Image.Image:
+    overlay = Image.new("RGBA", (WIDTH, HEIGHT), (0, 0, 0, 0))
+    draw = ImageDraw.Draw(overlay)
+    phase = 2 * np.pi * frame_index / max(total_frames, 1)
+    for lamp_index, (center_x, center_y, radius) in enumerate(_find_pendant_lamps(base_array)):
+        pulse = 0.55 + 0.45 * np.sin(phase + lamp_index * 1.4)
+        alpha = int(18 + 22 * pulse)
+        draw.ellipse(
+            (
+                center_x - radius,
+                center_y - radius,
+                center_x + radius,
+                center_y + radius,
+            ),
+            fill=(255, 196, 110, alpha),
+        )
+        cone_h = int(radius * 1.8)
+        draw.polygon(
+            (
+                center_x - radius * 0.45,
+                center_y + radius * 0.2,
+                center_x + radius * 0.45,
+                center_y + radius * 0.2,
+                center_x + radius * 0.9,
+                center_y + cone_h,
+                center_x - radius * 0.9,
+                center_y + cone_h,
+            ),
+            fill=(255, 170, 80, int(10 + 10 * pulse)),
+        )
+    overlay = overlay.filter(ImageFilter.GaussianBlur(10))
+    return Image.alpha_composite(base_frame.convert("RGBA"), overlay)
+
+
+def render_city_twinkles(
+    base_frame: Image.Image,
+    frame_index: int,
+    total_frames: int,
+    seed: int,
+    window_mask: Image.Image,
+) -> Image.Image:
+    x0, y0, x1, y1 = _mask_bounds(window_mask)
+    overlay = Image.new("RGBA", (WIDTH, HEIGHT), (0, 0, 0, 0))
+    draw = ImageDraw.Draw(overlay)
+    phase = frame_index / max(total_frames, 1)
+    rng = np.random.default_rng(seed + 401)
+    for index in range(28):
+        local_x = int(rng.integers(max(x0 + 8, 0), max(x1 - 8, x0 + 20)))
+        local_y = int(rng.integers(max(y0 + 8, 0), max(y1 - 8, y0 + 20)))
+        twinkle = 0.35 + 0.65 * (0.5 + 0.5 * np.sin(phase * 2 * np.pi * 2.4 + index * 0.8))
+        radius = 1 + (index % 3)
+        alpha = int(40 + 90 * twinkle)
+        color = (255, 220, 150, alpha) if index % 4 else (180, 210, 255, alpha)
+        draw.ellipse(
+            (local_x - radius, local_y - radius, local_x + radius, local_y + radius),
+            fill=color,
+        )
+    overlay = overlay.filter(ImageFilter.GaussianBlur(1.2))
+    return Image.alpha_composite(
+        base_frame.convert("RGBA"),
+        _apply_window_mask(overlay, window_mask),
+    )
+
+
 def apply_scene_effects(
     base_array: np.ndarray,
     frame_index: int,
@@ -808,5 +919,9 @@ def apply_scene_effects(
         rgba = render_birds(rgba, frame_index, total_frames, window_mask, seed + 23)
     if "dust_motes" in effects:
         rgba = render_dust_motes(rgba, frame_index, total_frames, seed + 31, frame_array)
+    if "pendant_glow" in effects:
+        rgba = render_pendant_glow(rgba, frame_index, total_frames, frame_array)
+    if "city_twinkles" in effects:
+        rgba = render_city_twinkles(rgba, frame_index, total_frames, seed + 37, window_mask)
 
     return rgba

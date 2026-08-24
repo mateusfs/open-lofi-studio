@@ -56,7 +56,7 @@
 - Cena IA única por vídeo — não reutilizar `scene-base.png` de outra produção
 - Cena gerada automaticamente por `generate_scene_ai.py` no `npm run next` / `next:preview` (OpenAI ou Pollinations via `.env`); backup em `assets/scenes/`
 - Prompt de cena: **sem vapor/fumo/steam assado na PNG** — vapor só via overlay animado
-- Modo de animação padrão: **`locked`** (câmera travada, sem zoompan). `hybrid` quando há `animate.layers`. `cinematic` / `procedural` só se explícito
+- Modo de animação padrão: **`ambient`** (câmera travada + micro-animação por mood). `hybrid` quando há `animate.layers`. `locked` / `cinematic` / `procedural` só se explícito — nunca `slow_zoom` ou `cinematic` como default
 - `effect-mask.png` gerada automaticamente quando o modo hybrid precisa
 - Qualidade visual no patamar de TheSoundYouNeed — ver [referencia-canal.md](./referencia-canal.md)
 - Loop visual imperceptível; no preview exportar `source/qa-loop-seam.png` no ponto de wrap

@@ -52,8 +52,8 @@ def write_meta_json(production_dir: Path, video: dict) -> None:
     if isinstance(layers, list) and layers:
         animate.setdefault("mode", "hybrid")
     else:
-        animate.setdefault("mode", "locked")
-        animate.setdefault("loopSeconds", 30)
+        animate.setdefault("mode", "ambient")
+        animate.setdefault("loopSeconds", 24)
     payload = {
         "series": video["series"],
         "mood": video["mood"],

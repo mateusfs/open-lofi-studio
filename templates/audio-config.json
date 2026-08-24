@@ -22,17 +22,1304 @@
   },
   "catalog": [
     {
-      "productionId": "001-demo-rainy-desk",
+      "productionId": "122-ambience-session-porto-ribeira-cafe",
       "tracks": [
-        "assets/audio/music/track-one.mp3",
-        "assets/audio/music/track-two.mp3",
-        "assets/audio/music/track-three.mp3"
+        "assets/audio/music/122-ambience-session-porto-ribeira-cafe-track-1.mp3",
+        "assets/audio/music/122-ambience-session-porto-ribeira-cafe-track-2.mp3",
+        "assets/audio/music/122-ambience-session-porto-ribeira-cafe-track-3.mp3"
       ],
       "musicVolume": 0.065,
-      "rainVolume": 0.055,
+      "rainVolume": 0.06,
+      "cafeVolume": 0.08,
+      "noRain": false,
+      "noCafe": false
+    },
+    {
+      "productionId": "123-ambience-session-vienna-coffeehouse",
+      "tracks": [
+        "assets/audio/music/123-ambience-session-vienna-coffeehouse-track-1.mp3",
+        "assets/audio/music/123-ambience-session-vienna-coffeehouse-track-2.mp3",
+        "assets/audio/music/123-ambience-session-vienna-coffeehouse-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.05,
+      "cafeVolume": 0.09,
+      "noRain": false,
+      "noCafe": false
+    },
+    {
+      "productionId": "124-ambience-session-melbourne-laneway",
+      "tracks": [
+        "assets/audio/music/124-ambience-session-melbourne-laneway-track-1.mp3",
+        "assets/audio/music/124-ambience-session-melbourne-laneway-track-2.mp3",
+        "assets/audio/music/124-ambience-session-melbourne-laneway-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.07,
+      "cafeVolume": 0.08,
+      "noRain": false,
+      "noCafe": false
+    },
+    {
+      "productionId": "125-ambience-session-brooklyn-brownstone",
+      "tracks": [
+        "assets/audio/music/125-ambience-session-brooklyn-brownstone-track-1.mp3",
+        "assets/audio/music/125-ambience-session-brooklyn-brownstone-track-2.mp3",
+        "assets/audio/music/125-ambience-session-brooklyn-brownstone-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.06,
+      "cafeVolume": 0.07,
+      "noRain": false,
+      "noCafe": false
+    },
+    {
+      "productionId": "126-ambience-session-barcelona-terrace",
+      "tracks": [
+        "assets/audio/music/126-ambience-session-barcelona-terrace-track-1.mp3",
+        "assets/audio/music/126-ambience-session-barcelona-terrace-track-2.mp3",
+        "assets/audio/music/126-ambience-session-barcelona-terrace-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.04,
+      "cafeVolume": 0.07,
+      "noRain": false,
+      "noCafe": false
+    },
+    {
+      "productionId": "127-ambience-session-prague-old-town",
+      "tracks": [
+        "assets/audio/music/127-ambience-session-prague-old-town-track-1.mp3",
+        "assets/audio/music/127-ambience-session-prague-old-town-track-2.mp3",
+        "assets/audio/music/127-ambience-session-prague-old-town-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.06,
+      "cafeVolume": 0.08,
+      "noRain": false,
+      "noCafe": false
+    },
+    {
+      "productionId": "128-ambience-session-edinburgh-close",
+      "tracks": [
+        "assets/audio/music/128-ambience-session-edinburgh-close-track-1.mp3",
+        "assets/audio/music/128-ambience-session-edinburgh-close-track-2.mp3",
+        "assets/audio/music/128-ambience-session-edinburgh-close-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.09,
+      "cafeVolume": 0.07,
+      "noRain": false,
+      "noCafe": false
+    },
+    {
+      "productionId": "129-ambience-session-montreal-winter-cafe",
+      "tracks": [
+        "assets/audio/music/129-ambience-session-montreal-winter-cafe-track-1.mp3",
+        "assets/audio/music/129-ambience-session-montreal-winter-cafe-track-2.mp3",
+        "assets/audio/music/129-ambience-session-montreal-winter-cafe-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.04,
+      "cafeVolume": 0.08,
+      "noRain": false,
+      "noCafe": false
+    },
+    {
+      "productionId": "130-ambience-session-taipei-night-market-desk",
+      "tracks": [
+        "assets/audio/music/130-ambience-session-taipei-night-market-desk-track-1.mp3",
+        "assets/audio/music/130-ambience-session-taipei-night-market-desk-track-2.mp3",
+        "assets/audio/music/130-ambience-session-taipei-night-market-desk-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.05,
+      "cafeVolume": 0.06,
+      "noRain": false,
+      "noCafe": false
+    },
+    {
+      "productionId": "131-ambience-session-istanbul-bosphorus",
+      "tracks": [
+        "assets/audio/music/131-ambience-session-istanbul-bosphorus-track-1.mp3",
+        "assets/audio/music/131-ambience-session-istanbul-bosphorus-track-2.mp3",
+        "assets/audio/music/131-ambience-session-istanbul-bosphorus-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.05,
+      "cafeVolume": 0.07,
+      "noRain": false,
+      "noCafe": false
+    },
+    {
+      "productionId": "132-rainy-night-coding-osaka-alley",
+      "tracks": [
+        "assets/audio/music/132-rainy-night-coding-osaka-alley-track-1.mp3",
+        "assets/audio/music/132-rainy-night-coding-osaka-alley-track-2.mp3",
+        "assets/audio/music/132-rainy-night-coding-osaka-alley-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.11,
       "cafeVolume": 0.03,
       "noRain": false,
       "noCafe": false
+    },
+    {
+      "productionId": "133-rainy-night-coding-vancouver-harbor",
+      "tracks": [
+        "assets/audio/music/133-rainy-night-coding-vancouver-harbor-track-1.mp3",
+        "assets/audio/music/133-rainy-night-coding-vancouver-harbor-track-2.mp3",
+        "assets/audio/music/133-rainy-night-coding-vancouver-harbor-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.1,
+      "cafeVolume": 0.04,
+      "noRain": false,
+      "noCafe": false
+    },
+    {
+      "productionId": "134-rainy-night-coding-dublin-georgian",
+      "tracks": [
+        "assets/audio/music/134-rainy-night-coding-dublin-georgian-track-1.mp3",
+        "assets/audio/music/134-rainy-night-coding-dublin-georgian-track-2.mp3",
+        "assets/audio/music/134-rainy-night-coding-dublin-georgian-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.1,
+      "cafeVolume": 0.05,
+      "noRain": false,
+      "noCafe": false
+    },
+    {
+      "productionId": "135-rainy-night-coding-chicago-loop",
+      "tracks": [
+        "assets/audio/music/135-rainy-night-coding-chicago-loop-track-1.mp3",
+        "assets/audio/music/135-rainy-night-coding-chicago-loop-track-2.mp3",
+        "assets/audio/music/135-rainy-night-coding-chicago-loop-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.12,
+      "cafeVolume": 0.0,
+      "noRain": false,
+      "noCafe": true
+    },
+    {
+      "productionId": "136-rainy-night-coding-manchester-brick",
+      "tracks": [
+        "assets/audio/music/136-rainy-night-coding-manchester-brick-track-1.mp3",
+        "assets/audio/music/136-rainy-night-coding-manchester-brick-track-2.mp3",
+        "assets/audio/music/136-rainy-night-coding-manchester-brick-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.1,
+      "cafeVolume": 0.04,
+      "noRain": false,
+      "noCafe": false
+    },
+    {
+      "productionId": "137-rainy-night-coding-singapore-monsoon",
+      "tracks": [
+        "assets/audio/music/137-rainy-night-coding-singapore-monsoon-track-1.mp3",
+        "assets/audio/music/137-rainy-night-coding-singapore-monsoon-track-2.mp3",
+        "assets/audio/music/137-rainy-night-coding-singapore-monsoon-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.13,
+      "cafeVolume": 0.02,
+      "noRain": false,
+      "noCafe": false
+    },
+    {
+      "productionId": "138-rainy-night-coding-portland-attic",
+      "tracks": [
+        "assets/audio/music/138-rainy-night-coding-portland-attic-track-1.mp3",
+        "assets/audio/music/138-rainy-night-coding-portland-attic-track-2.mp3",
+        "assets/audio/music/138-rainy-night-coding-portland-attic-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.09,
+      "cafeVolume": 0.04,
+      "noRain": false,
+      "noCafe": false
+    },
+    {
+      "productionId": "139-rainy-night-coding-busan-harbor-fog",
+      "tracks": [
+        "assets/audio/music/139-rainy-night-coding-busan-harbor-fog-track-1.mp3",
+        "assets/audio/music/139-rainy-night-coding-busan-harbor-fog-track-2.mp3",
+        "assets/audio/music/139-rainy-night-coding-busan-harbor-fog-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.11,
+      "cafeVolume": 0.0,
+      "noRain": false,
+      "noCafe": true
+    },
+    {
+      "productionId": "140-rainy-night-coding-glasgow-tenement",
+      "tracks": [
+        "assets/audio/music/140-rainy-night-coding-glasgow-tenement-track-1.mp3",
+        "assets/audio/music/140-rainy-night-coding-glasgow-tenement-track-2.mp3",
+        "assets/audio/music/140-rainy-night-coding-glasgow-tenement-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.1,
+      "cafeVolume": 0.04,
+      "noRain": false,
+      "noCafe": false
+    },
+    {
+      "productionId": "141-rainy-night-coding-hoboken-pier",
+      "tracks": [
+        "assets/audio/music/141-rainy-night-coding-hoboken-pier-track-1.mp3",
+        "assets/audio/music/141-rainy-night-coding-hoboken-pier-track-2.mp3",
+        "assets/audio/music/141-rainy-night-coding-hoboken-pier-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.1,
+      "cafeVolume": 0.03,
+      "noRain": false,
+      "noCafe": false
+    },
+    {
+      "productionId": "142-rainy-night-coding-kyoto-machiya-rain",
+      "tracks": [
+        "assets/audio/music/142-rainy-night-coding-kyoto-machiya-rain-track-1.mp3",
+        "assets/audio/music/142-rainy-night-coding-kyoto-machiya-rain-track-2.mp3",
+        "assets/audio/music/142-rainy-night-coding-kyoto-machiya-rain-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.09,
+      "cafeVolume": 0.03,
+      "noRain": false,
+      "noCafe": false
+    },
+    {
+      "productionId": "143-rainy-night-coding-rotterdam-docks",
+      "tracks": [
+        "assets/audio/music/143-rainy-night-coding-rotterdam-docks-track-1.mp3",
+        "assets/audio/music/143-rainy-night-coding-rotterdam-docks-track-2.mp3",
+        "assets/audio/music/143-rainy-night-coding-rotterdam-docks-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.11,
+      "cafeVolume": 0.02,
+      "noRain": false,
+      "noCafe": false
+    },
+    {
+      "productionId": "144-cabin-programmer-alpine-chalet",
+      "tracks": [
+        "assets/audio/music/144-cabin-programmer-alpine-chalet-track-1.mp3",
+        "assets/audio/music/144-cabin-programmer-alpine-chalet-track-2.mp3",
+        "assets/audio/music/144-cabin-programmer-alpine-chalet-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.03,
+      "cafeVolume": 0.0,
+      "noRain": false,
+      "noCafe": true
+    },
+    {
+      "productionId": "145-cabin-programmer-vermont-snow",
+      "tracks": [
+        "assets/audio/music/145-cabin-programmer-vermont-snow-track-1.mp3",
+        "assets/audio/music/145-cabin-programmer-vermont-snow-track-2.mp3",
+        "assets/audio/music/145-cabin-programmer-vermont-snow-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.03,
+      "cafeVolume": 0.0,
+      "noRain": false,
+      "noCafe": true
+    },
+    {
+      "productionId": "146-cabin-programmer-norwegian-fjord",
+      "tracks": [
+        "assets/audio/music/146-cabin-programmer-norwegian-fjord-track-1.mp3",
+        "assets/audio/music/146-cabin-programmer-norwegian-fjord-track-2.mp3",
+        "assets/audio/music/146-cabin-programmer-norwegian-fjord-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.02,
+      "cafeVolume": 0.0,
+      "noRain": false,
+      "noCafe": true
+    },
+    {
+      "productionId": "147-cabin-programmer-canadian-rockies",
+      "tracks": [
+        "assets/audio/music/147-cabin-programmer-canadian-rockies-track-1.mp3",
+        "assets/audio/music/147-cabin-programmer-canadian-rockies-track-2.mp3",
+        "assets/audio/music/147-cabin-programmer-canadian-rockies-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.03,
+      "cafeVolume": 0.0,
+      "noRain": false,
+      "noCafe": true
+    },
+    {
+      "productionId": "148-cabin-programmer-scottish-bothy",
+      "tracks": [
+        "assets/audio/music/148-cabin-programmer-scottish-bothy-track-1.mp3",
+        "assets/audio/music/148-cabin-programmer-scottish-bothy-track-2.mp3",
+        "assets/audio/music/148-cabin-programmer-scottish-bothy-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.04,
+      "cafeVolume": 0.0,
+      "noRain": false,
+      "noCafe": true
+    },
+    {
+      "productionId": "149-cabin-programmer-tahoe-cabin",
+      "tracks": [
+        "assets/audio/music/149-cabin-programmer-tahoe-cabin-track-1.mp3",
+        "assets/audio/music/149-cabin-programmer-tahoe-cabin-track-2.mp3",
+        "assets/audio/music/149-cabin-programmer-tahoe-cabin-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.03,
+      "cafeVolume": 0.0,
+      "noRain": false,
+      "noCafe": true
+    },
+    {
+      "productionId": "150-cabin-programmer-hokkaido-onsen-desk",
+      "tracks": [
+        "assets/audio/music/150-cabin-programmer-hokkaido-onsen-desk-track-1.mp3",
+        "assets/audio/music/150-cabin-programmer-hokkaido-onsen-desk-track-2.mp3",
+        "assets/audio/music/150-cabin-programmer-hokkaido-onsen-desk-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.03,
+      "cafeVolume": 0.0,
+      "noRain": false,
+      "noCafe": true
+    },
+    {
+      "productionId": "151-cabin-programmer-patagonia-lodge",
+      "tracks": [
+        "assets/audio/music/151-cabin-programmer-patagonia-lodge-track-1.mp3",
+        "assets/audio/music/151-cabin-programmer-patagonia-lodge-track-2.mp3",
+        "assets/audio/music/151-cabin-programmer-patagonia-lodge-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.02,
+      "cafeVolume": 0.0,
+      "noRain": false,
+      "noCafe": true
+    },
+    {
+      "productionId": "152-dark-mode-workspace-triple-monitor",
+      "tracks": [
+        "assets/audio/music/152-dark-mode-workspace-triple-monitor-track-1.mp3",
+        "assets/audio/music/152-dark-mode-workspace-triple-monitor-track-2.mp3",
+        "assets/audio/music/152-dark-mode-workspace-triple-monitor-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "153-dark-mode-workspace-oled-cave",
+      "tracks": [
+        "assets/audio/music/153-dark-mode-workspace-oled-cave-track-1.mp3",
+        "assets/audio/music/153-dark-mode-workspace-oled-cave-track-2.mp3",
+        "assets/audio/music/153-dark-mode-workspace-oled-cave-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "154-dark-mode-workspace-mechanical-keyboard",
+      "tracks": [
+        "assets/audio/music/154-dark-mode-workspace-mechanical-keyboard-track-1.mp3",
+        "assets/audio/music/154-dark-mode-workspace-mechanical-keyboard-track-2.mp3",
+        "assets/audio/music/154-dark-mode-workspace-mechanical-keyboard-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "155-dark-mode-workspace-battlestation",
+      "tracks": [
+        "assets/audio/music/155-dark-mode-workspace-battlestation-track-1.mp3",
+        "assets/audio/music/155-dark-mode-workspace-battlestation-track-2.mp3",
+        "assets/audio/music/155-dark-mode-workspace-battlestation-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "156-linux-hacker-room-homelab-rack",
+      "tracks": [
+        "assets/audio/music/156-linux-hacker-room-homelab-rack-track-1.mp3",
+        "assets/audio/music/156-linux-hacker-room-homelab-rack-track-2.mp3",
+        "assets/audio/music/156-linux-hacker-room-homelab-rack-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "157-linux-hacker-room-server-closet-rgb",
+      "tracks": [
+        "assets/audio/music/157-linux-hacker-room-server-closet-rgb-track-1.mp3",
+        "assets/audio/music/157-linux-hacker-room-server-closet-rgb-track-2.mp3",
+        "assets/audio/music/157-linux-hacker-room-server-closet-rgb-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "158-linux-hacker-room-raspberry-cluster",
+      "tracks": [
+        "assets/audio/music/158-linux-hacker-room-raspberry-cluster-track-1.mp3",
+        "assets/audio/music/158-linux-hacker-room-raspberry-cluster-track-2.mp3",
+        "assets/audio/music/158-linux-hacker-room-raspberry-cluster-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "159-linux-hacker-room-neon-terminal-wall",
+      "tracks": [
+        "assets/audio/music/159-linux-hacker-room-neon-terminal-wall-track-1.mp3",
+        "assets/audio/music/159-linux-hacker-room-neon-terminal-wall-track-2.mp3",
+        "assets/audio/music/159-linux-hacker-room-neon-terminal-wall-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "160-linux-hacker-room-arch-tiling-night",
+      "tracks": [
+        "assets/audio/music/160-linux-hacker-room-arch-tiling-night-track-1.mp3",
+        "assets/audio/music/160-linux-hacker-room-arch-tiling-night-track-2.mp3",
+        "assets/audio/music/160-linux-hacker-room-arch-tiling-night-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "161-cyberpunk-developer-room-synthwave-desk",
+      "tracks": [
+        "assets/audio/music/161-cyberpunk-developer-room-synthwave-desk-track-1.mp3",
+        "assets/audio/music/161-cyberpunk-developer-room-synthwave-desk-track-2.mp3",
+        "assets/audio/music/161-cyberpunk-developer-room-synthwave-desk-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "162-cyberpunk-developer-room-neon-alley-loft",
+      "tracks": [
+        "assets/audio/music/162-cyberpunk-developer-room-neon-alley-loft-track-1.mp3",
+        "assets/audio/music/162-cyberpunk-developer-room-neon-alley-loft-track-2.mp3",
+        "assets/audio/music/162-cyberpunk-developer-room-neon-alley-loft-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.1,
+      "cafeVolume": 0.0,
+      "noRain": false,
+      "noCafe": true
+    },
+    {
+      "productionId": "163-cyberpunk-developer-room-mega-city-2am",
+      "tracks": [
+        "assets/audio/music/163-cyberpunk-developer-room-mega-city-2am-track-1.mp3",
+        "assets/audio/music/163-cyberpunk-developer-room-mega-city-2am-track-2.mp3",
+        "assets/audio/music/163-cyberpunk-developer-room-mega-city-2am-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.08,
+      "cafeVolume": 0.0,
+      "noRain": false,
+      "noCafe": true
+    },
+    {
+      "productionId": "164-cyberpunk-developer-room-holo-billboard",
+      "tracks": [
+        "assets/audio/music/164-cyberpunk-developer-room-holo-billboard-track-1.mp3",
+        "assets/audio/music/164-cyberpunk-developer-room-holo-billboard-track-2.mp3",
+        "assets/audio/music/164-cyberpunk-developer-room-holo-billboard-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.07,
+      "cafeVolume": 0.0,
+      "noRain": false,
+      "noCafe": true
+    },
+    {
+      "productionId": "165-cyberpunk-developer-room-maglev-window",
+      "tracks": [
+        "assets/audio/music/165-cyberpunk-developer-room-maglev-window-track-1.mp3",
+        "assets/audio/music/165-cyberpunk-developer-room-maglev-window-track-2.mp3",
+        "assets/audio/music/165-cyberpunk-developer-room-maglev-window-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.09,
+      "cafeVolume": 0.0,
+      "noRain": false,
+      "noCafe": true
+    },
+    {
+      "productionId": "166-space-programming-sessio-iss-cupola",
+      "tracks": [
+        "assets/audio/music/166-space-programming-sessio-iss-cupola-track-1.mp3",
+        "assets/audio/music/166-space-programming-sessio-iss-cupola-track-2.mp3",
+        "assets/audio/music/166-space-programming-sessio-iss-cupola-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "167-space-programming-sessio-orbital-lab",
+      "tracks": [
+        "assets/audio/music/167-space-programming-sessio-orbital-lab-track-1.mp3",
+        "assets/audio/music/167-space-programming-sessio-orbital-lab-track-2.mp3",
+        "assets/audio/music/167-space-programming-sessio-orbital-lab-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "168-space-programming-sessio-titan-outpost",
+      "tracks": [
+        "assets/audio/music/168-space-programming-sessio-titan-outpost-track-1.mp3",
+        "assets/audio/music/168-space-programming-sessio-titan-outpost-track-2.mp3",
+        "assets/audio/music/168-space-programming-sessio-titan-outpost-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "169-space-programming-sessio-lagrange-station",
+      "tracks": [
+        "assets/audio/music/169-space-programming-sessio-lagrange-station-track-1.mp3",
+        "assets/audio/music/169-space-programming-sessio-lagrange-station-track-2.mp3",
+        "assets/audio/music/169-space-programming-sessio-lagrange-station-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "170-space-programming-sessio-europa-ice-base",
+      "tracks": [
+        "assets/audio/music/170-space-programming-sessio-europa-ice-base-track-1.mp3",
+        "assets/audio/music/170-space-programming-sessio-europa-ice-base-track-2.mp3",
+        "assets/audio/music/170-space-programming-sessio-europa-ice-base-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "171-space-programming-sessio-saturn-rings-view",
+      "tracks": [
+        "assets/audio/music/171-space-programming-sessio-saturn-rings-view-track-1.mp3",
+        "assets/audio/music/171-space-programming-sessio-saturn-rings-view-track-2.mp3",
+        "assets/audio/music/171-space-programming-sessio-saturn-rings-view-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "172-deep-work-sessions-morning-courtyard",
+      "tracks": [
+        "assets/audio/music/172-deep-work-sessions-morning-courtyard-track-1.mp3",
+        "assets/audio/music/172-deep-work-sessions-morning-courtyard-track-2.mp3",
+        "assets/audio/music/172-deep-work-sessions-morning-courtyard-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.04,
+      "noRain": true,
+      "noCafe": false
+    },
+    {
+      "productionId": "173-deep-work-sessions-sunrise-loft",
+      "tracks": [
+        "assets/audio/music/173-deep-work-sessions-sunrise-loft-track-1.mp3",
+        "assets/audio/music/173-deep-work-sessions-sunrise-loft-track-2.mp3",
+        "assets/audio/music/173-deep-work-sessions-sunrise-loft-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.03,
+      "noRain": true,
+      "noCafe": false
+    },
+    {
+      "productionId": "174-deep-work-sessions-lake-house",
+      "tracks": [
+        "assets/audio/music/174-deep-work-sessions-lake-house-track-1.mp3",
+        "assets/audio/music/174-deep-work-sessions-lake-house-track-2.mp3",
+        "assets/audio/music/174-deep-work-sessions-lake-house-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "175-deep-work-sessions-beach-house-desk",
+      "tracks": [
+        "assets/audio/music/175-deep-work-sessions-beach-house-desk-track-1.mp3",
+        "assets/audio/music/175-deep-work-sessions-beach-house-desk-track-2.mp3",
+        "assets/audio/music/175-deep-work-sessions-beach-house-desk-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "176-deep-work-sessions-forest-window",
+      "tracks": [
+        "assets/audio/music/176-deep-work-sessions-forest-window-track-1.mp3",
+        "assets/audio/music/176-deep-work-sessions-forest-window-track-2.mp3",
+        "assets/audio/music/176-deep-work-sessions-forest-window-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "177-deep-work-sessions-desert-adobe",
+      "tracks": [
+        "assets/audio/music/177-deep-work-sessions-desert-adobe-track-1.mp3",
+        "assets/audio/music/177-deep-work-sessions-desert-adobe-track-2.mp3",
+        "assets/audio/music/177-deep-work-sessions-desert-adobe-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "178-deep-work-sessions-cliffside-studio",
+      "tracks": [
+        "assets/audio/music/178-deep-work-sessions-cliffside-studio-track-1.mp3",
+        "assets/audio/music/178-deep-work-sessions-cliffside-studio-track-2.mp3",
+        "assets/audio/music/178-deep-work-sessions-cliffside-studio-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "179-silent-library-for-deep--reading-carrel",
+      "tracks": [
+        "assets/audio/music/179-silent-library-for-deep--reading-carrel-track-1.mp3",
+        "assets/audio/music/179-silent-library-for-deep--reading-carrel-track-2.mp3",
+        "assets/audio/music/179-silent-library-for-deep--reading-carrel-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "180-silent-library-for-deep--law-library",
+      "tracks": [
+        "assets/audio/music/180-silent-library-for-deep--law-library-track-1.mp3",
+        "assets/audio/music/180-silent-library-for-deep--law-library-track-2.mp3",
+        "assets/audio/music/180-silent-library-for-deep--law-library-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "181-silent-library-for-deep--monastery-script",
+      "tracks": [
+        "assets/audio/music/181-silent-library-for-deep--monastery-script-track-1.mp3",
+        "assets/audio/music/181-silent-library-for-deep--monastery-script-track-2.mp3",
+        "assets/audio/music/181-silent-library-for-deep--monastery-script-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "182-silent-library-for-deep--british-library",
+      "tracks": [
+        "assets/audio/music/182-silent-library-for-deep--british-library-track-1.mp3",
+        "assets/audio/music/182-silent-library-for-deep--british-library-track-2.mp3",
+        "assets/audio/music/182-silent-library-for-deep--british-library-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "183-startup-office-at-midnig-seed-round-night",
+      "tracks": [
+        "assets/audio/music/183-startup-office-at-midnig-seed-round-night-track-1.mp3",
+        "assets/audio/music/183-startup-office-at-midnig-seed-round-night-track-2.mp3",
+        "assets/audio/music/183-startup-office-at-midnig-seed-round-night-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.04,
+      "noRain": true,
+      "noCafe": false
+    },
+    {
+      "productionId": "184-startup-office-at-midnig-kitchen-after-hours",
+      "tracks": [
+        "assets/audio/music/184-startup-office-at-midnig-kitchen-after-hours-track-1.mp3",
+        "assets/audio/music/184-startup-office-at-midnig-kitchen-after-hours-track-2.mp3",
+        "assets/audio/music/184-startup-office-at-midnig-kitchen-after-hours-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.05,
+      "noRain": true,
+      "noCafe": false
+    },
+    {
+      "productionId": "185-startup-office-at-midnig-ping-pong-dark",
+      "tracks": [
+        "assets/audio/music/185-startup-office-at-midnig-ping-pong-dark-track-1.mp3",
+        "assets/audio/music/185-startup-office-at-midnig-ping-pong-dark-track-2.mp3",
+        "assets/audio/music/185-startup-office-at-midnig-ping-pong-dark-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "186-late-night-debugging-incident-bridge",
+      "tracks": [
+        "assets/audio/music/186-late-night-debugging-incident-bridge-track-1.mp3",
+        "assets/audio/music/186-late-night-debugging-incident-bridge-track-2.mp3",
+        "assets/audio/music/186-late-night-debugging-incident-bridge-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "187-late-night-debugging-on-call-couch",
+      "tracks": [
+        "assets/audio/music/187-late-night-debugging-on-call-couch-track-1.mp3",
+        "assets/audio/music/187-late-night-debugging-on-call-couch-track-2.mp3",
+        "assets/audio/music/187-late-night-debugging-on-call-couch-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "188-late-night-debugging-deploy-window",
+      "tracks": [
+        "assets/audio/music/188-late-night-debugging-deploy-window-track-1.mp3",
+        "assets/audio/music/188-late-night-debugging-deploy-window-track-2.mp3",
+        "assets/audio/music/188-late-night-debugging-deploy-window-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "189-ai-research-lab-gpu-cluster",
+      "tracks": [
+        "assets/audio/music/189-ai-research-lab-gpu-cluster-track-1.mp3",
+        "assets/audio/music/189-ai-research-lab-gpu-cluster-track-2.mp3",
+        "assets/audio/music/189-ai-research-lab-gpu-cluster-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "190-ai-research-lab-whiteboard-dawn",
+      "tracks": [
+        "assets/audio/music/190-ai-research-lab-whiteboard-dawn-track-1.mp3",
+        "assets/audio/music/190-ai-research-lab-whiteboard-dawn-track-2.mp3",
+        "assets/audio/music/190-ai-research-lab-whiteboard-dawn-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "191-ai-research-lab-quiet-lab-bench",
+      "tracks": [
+        "assets/audio/music/191-ai-research-lab-quiet-lab-bench-track-1.mp3",
+        "assets/audio/music/191-ai-research-lab-quiet-lab-bench-track-2.mp3",
+        "assets/audio/music/191-ai-research-lab-quiet-lab-bench-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "192-lounge-coding-sessions-vinyl-corner",
+      "tracks": [
+        "assets/audio/music/192-lounge-coding-sessions-vinyl-corner-track-1.mp3",
+        "assets/audio/music/192-lounge-coding-sessions-vinyl-corner-track-2.mp3",
+        "assets/audio/music/192-lounge-coding-sessions-vinyl-corner-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.04,
+      "noRain": true,
+      "noCafe": false
+    },
+    {
+      "productionId": "193-lounge-coding-sessions-hotel-lobby-night",
+      "tracks": [
+        "assets/audio/music/193-lounge-coding-sessions-hotel-lobby-night-track-1.mp3",
+        "assets/audio/music/193-lounge-coding-sessions-hotel-lobby-night-track-2.mp3",
+        "assets/audio/music/193-lounge-coding-sessions-hotel-lobby-night-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.05,
+      "noRain": true,
+      "noCafe": false
+    },
+    {
+      "productionId": "194-lounge-coding-sessions-jazz-club-booth",
+      "tracks": [
+        "assets/audio/music/194-lounge-coding-sessions-jazz-club-booth-track-1.mp3",
+        "assets/audio/music/194-lounge-coding-sessions-jazz-club-booth-track-2.mp3",
+        "assets/audio/music/194-lounge-coding-sessions-jazz-club-booth-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.04,
+      "noRain": true,
+      "noCafe": false
+    },
+    {
+      "productionId": "195-seasonal-spring-rain-study",
+      "tracks": [
+        "assets/audio/music/195-seasonal-spring-rain-study-track-1.mp3",
+        "assets/audio/music/195-seasonal-spring-rain-study-track-2.mp3",
+        "assets/audio/music/195-seasonal-spring-rain-study-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.09,
+      "cafeVolume": 0.04,
+      "noRain": false,
+      "noCafe": false
+    },
+    {
+      "productionId": "196-seasonal-autumn-library",
+      "tracks": [
+        "assets/audio/music/196-seasonal-autumn-library-track-1.mp3",
+        "assets/audio/music/196-seasonal-autumn-library-track-2.mp3",
+        "assets/audio/music/196-seasonal-autumn-library-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "197-seasonal-winter-solstice-code",
+      "tracks": [
+        "assets/audio/music/197-seasonal-winter-solstice-code-track-1.mp3",
+        "assets/audio/music/197-seasonal-winter-solstice-code-track-2.mp3",
+        "assets/audio/music/197-seasonal-winter-solstice-code-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.03,
+      "cafeVolume": 0.0,
+      "noRain": false,
+      "noCafe": true
+    },
+    {
+      "productionId": "198-seasonal-golden-hour-remote",
+      "tracks": [
+        "assets/audio/music/198-seasonal-golden-hour-remote-track-1.mp3",
+        "assets/audio/music/198-seasonal-golden-hour-remote-track-2.mp3",
+        "assets/audio/music/198-seasonal-golden-hour-remote-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.04,
+      "noRain": true,
+      "noCafe": false
+    },
+    {
+      "productionId": "199-ambience-session-lisbon-tram-night",
+      "tracks": [
+        "assets/audio/music/199-ambience-session-lisbon-tram-night-track-1.mp3",
+        "assets/audio/music/199-ambience-session-lisbon-tram-night-track-2.mp3",
+        "assets/audio/music/199-ambience-session-lisbon-tram-night-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.06,
+      "cafeVolume": 0.08,
+      "noRain": false,
+      "noCafe": false
+    },
+    {
+      "productionId": "200-rainy-night-coding-hong-kong-tram",
+      "tracks": [
+        "assets/audio/music/200-rainy-night-coding-hong-kong-tram-track-1.mp3",
+        "assets/audio/music/200-rainy-night-coding-hong-kong-tram-track-2.mp3",
+        "assets/audio/music/200-rainy-night-coding-hong-kong-tram-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.11,
+      "cafeVolume": 0.03,
+      "noRain": false,
+      "noCafe": false
+    },
+    {
+      "productionId": "201-cabin-programmer-fireplace-reading",
+      "tracks": [
+        "assets/audio/music/201-cabin-programmer-fireplace-reading-track-1.mp3",
+        "assets/audio/music/201-cabin-programmer-fireplace-reading-track-2.mp3",
+        "assets/audio/music/201-cabin-programmer-fireplace-reading-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.03,
+      "cafeVolume": 0.0,
+      "noRain": false,
+      "noCafe": true
+    },
+    {
+      "productionId": "202-dark-mode-workspace-minimal-walnut",
+      "tracks": [
+        "assets/audio/music/202-dark-mode-workspace-minimal-walnut-track-1.mp3",
+        "assets/audio/music/202-dark-mode-workspace-minimal-walnut-track-2.mp3",
+        "assets/audio/music/202-dark-mode-workspace-minimal-walnut-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "203-linux-hacker-room-homelab-basement",
+      "tracks": [
+        "assets/audio/music/203-linux-hacker-room-homelab-basement-track-1.mp3",
+        "assets/audio/music/203-linux-hacker-room-homelab-basement-track-2.mp3",
+        "assets/audio/music/203-linux-hacker-room-homelab-basement-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "204-cyberpunk-developer-room-synthwave-rain",
+      "tracks": [
+        "assets/audio/music/204-cyberpunk-developer-room-synthwave-rain-track-1.mp3",
+        "assets/audio/music/204-cyberpunk-developer-room-synthwave-rain-track-2.mp3",
+        "assets/audio/music/204-cyberpunk-developer-room-synthwave-rain-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.11,
+      "cafeVolume": 0.0,
+      "noRain": false,
+      "noCafe": true
+    },
+    {
+      "productionId": "205-space-programming-sessio-deep-space-radio",
+      "tracks": [
+        "assets/audio/music/205-space-programming-sessio-deep-space-radio-track-1.mp3",
+        "assets/audio/music/205-space-programming-sessio-deep-space-radio-track-2.mp3",
+        "assets/audio/music/205-space-programming-sessio-deep-space-radio-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "206-deep-work-sessions-ocean-tide",
+      "tracks": [
+        "assets/audio/music/206-deep-work-sessions-ocean-tide-track-1.mp3",
+        "assets/audio/music/206-deep-work-sessions-ocean-tide-track-2.mp3",
+        "assets/audio/music/206-deep-work-sessions-ocean-tide-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "207-silent-library-for-deep--candle-carrel",
+      "tracks": [
+        "assets/audio/music/207-silent-library-for-deep--candle-carrel-track-1.mp3",
+        "assets/audio/music/207-silent-library-for-deep--candle-carrel-track-2.mp3",
+        "assets/audio/music/207-silent-library-for-deep--candle-carrel-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "208-startup-office-at-midnig-empty-floor",
+      "tracks": [
+        "assets/audio/music/208-startup-office-at-midnig-empty-floor-track-1.mp3",
+        "assets/audio/music/208-startup-office-at-midnig-empty-floor-track-2.mp3",
+        "assets/audio/music/208-startup-office-at-midnig-empty-floor-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.03,
+      "noRain": true,
+      "noCafe": false
+    },
+    {
+      "productionId": "209-late-night-debugging-dual-terminal",
+      "tracks": [
+        "assets/audio/music/209-late-night-debugging-dual-terminal-track-1.mp3",
+        "assets/audio/music/209-late-night-debugging-dual-terminal-track-2.mp3",
+        "assets/audio/music/209-late-night-debugging-dual-terminal-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "210-ai-research-lab-server-aisle",
+      "tracks": [
+        "assets/audio/music/210-ai-research-lab-server-aisle-track-1.mp3",
+        "assets/audio/music/210-ai-research-lab-server-aisle-track-2.mp3",
+        "assets/audio/music/210-ai-research-lab-server-aisle-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "211-lounge-coding-sessions-speakeasy-desk",
+      "tracks": [
+        "assets/audio/music/211-lounge-coding-sessions-speakeasy-desk-track-1.mp3",
+        "assets/audio/music/211-lounge-coding-sessions-speakeasy-desk-track-2.mp3",
+        "assets/audio/music/211-lounge-coding-sessions-speakeasy-desk-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.05,
+      "noRain": true,
+      "noCafe": false
+    },
+    {
+      "productionId": "212-ambience-session-warm-mug-rainy-window",
+      "tracks": [
+        "assets/audio/music/212-ambience-session-warm-mug-rainy-window-track-1.mp3",
+        "assets/audio/music/212-ambience-session-warm-mug-rainy-window-track-2.mp3",
+        "assets/audio/music/212-ambience-session-warm-mug-rainy-window-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.09,
+      "cafeVolume": 0.08,
+      "noRain": false,
+      "noCafe": false
+    },
+    {
+      "productionId": "213-rainy-night-coding-tokyo-capsule",
+      "tracks": [
+        "assets/audio/music/213-rainy-night-coding-tokyo-capsule-track-1.mp3",
+        "assets/audio/music/213-rainy-night-coding-tokyo-capsule-track-2.mp3",
+        "assets/audio/music/213-rainy-night-coding-tokyo-capsule-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.1,
+      "cafeVolume": 0.02,
+      "noRain": false,
+      "noCafe": false
+    },
+    {
+      "productionId": "214-cabin-programmer-cozy-wool-blanket",
+      "tracks": [
+        "assets/audio/music/214-cabin-programmer-cozy-wool-blanket-track-1.mp3",
+        "assets/audio/music/214-cabin-programmer-cozy-wool-blanket-track-2.mp3",
+        "assets/audio/music/214-cabin-programmer-cozy-wool-blanket-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.03,
+      "cafeVolume": 0.0,
+      "noRain": false,
+      "noCafe": true
+    },
+    {
+      "productionId": "215-deep-work-sessions-morning-birds-garden",
+      "tracks": [
+        "assets/audio/music/215-deep-work-sessions-morning-birds-garden-track-1.mp3",
+        "assets/audio/music/215-deep-work-sessions-morning-birds-garden-track-2.mp3",
+        "assets/audio/music/215-deep-work-sessions-morning-birds-garden-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "216-cyberpunk-developer-room-rgb-alley",
+      "tracks": [
+        "assets/audio/music/216-cyberpunk-developer-room-rgb-alley-track-1.mp3",
+        "assets/audio/music/216-cyberpunk-developer-room-rgb-alley-track-2.mp3",
+        "assets/audio/music/216-cyberpunk-developer-room-rgb-alley-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.09,
+      "cafeVolume": 0.0,
+      "noRain": false,
+      "noCafe": true
+    },
+    {
+      "productionId": "217-space-programming-sessio-orbital-sunrise",
+      "tracks": [
+        "assets/audio/music/217-space-programming-sessio-orbital-sunrise-track-1.mp3",
+        "assets/audio/music/217-space-programming-sessio-orbital-sunrise-track-2.mp3",
+        "assets/audio/music/217-space-programming-sessio-orbital-sunrise-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "218-linux-hacker-room-neon-homelab",
+      "tracks": [
+        "assets/audio/music/218-linux-hacker-room-neon-homelab-track-1.mp3",
+        "assets/audio/music/218-linux-hacker-room-neon-homelab-track-2.mp3",
+        "assets/audio/music/218-linux-hacker-room-neon-homelab-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "219-deep-work-sessions-lake-sunrise",
+      "tracks": [
+        "assets/audio/music/219-deep-work-sessions-lake-sunrise-track-1.mp3",
+        "assets/audio/music/219-deep-work-sessions-lake-sunrise-track-2.mp3",
+        "assets/audio/music/219-deep-work-sessions-lake-sunrise-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
+    },
+    {
+      "productionId": "220-ambience-session-paris-rain-cafe",
+      "tracks": [
+        "assets/audio/music/220-ambience-session-paris-rain-cafe-track-1.mp3",
+        "assets/audio/music/220-ambience-session-paris-rain-cafe-track-2.mp3",
+        "assets/audio/music/220-ambience-session-paris-rain-cafe-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.09,
+      "cafeVolume": 0.08,
+      "noRain": false,
+      "noCafe": false
+    },
+    {
+      "productionId": "221-seasonal-new-moon-focus",
+      "tracks": [
+        "assets/audio/music/221-seasonal-new-moon-focus-track-1.mp3",
+        "assets/audio/music/221-seasonal-new-moon-focus-track-2.mp3",
+        "assets/audio/music/221-seasonal-new-moon-focus-track-3.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.0,
+      "cafeVolume": 0.0,
+      "noRain": true,
+      "noCafe": true
     }
   ]
 }

@@ -39,6 +39,10 @@ MUG_RIM_ABOVE_BODY = 77
 LEFT_HALF_RATIO = 0.55
 LEFT_OVERRIDE_MAX_RATIO = 0.35
 LED_BLUE_DOMINANCE = 35.0
+MONITOR_X_MIN_RATIO = 0.30
+MONITOR_X_MAX_RATIO = 0.84
+MONITOR_CHROMA_MIN = 28.0
+MONITOR_WARM_BODY_MIN = 0.08
 
 
 @dataclass
@@ -68,9 +72,10 @@ RAIN_LAYERS = [
 
 
 def _channel_stats(base: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
-    red = base[:, :, 0]
-    green = base[:, :, 1]
-    blue = base[:, :, 2]
+    array = base.astype(np.float32)
+    red = array[:, :, 0]
+    green = array[:, :, 1]
+    blue = array[:, :, 2]
     brightness = (red + green + blue) / 3.0
     return red, green, blue, brightness
 
@@ -156,6 +161,94 @@ def _build_steam_column_mask(
     return (region_brightness >= bright_threshold) & low_chroma & ~led_pixels
 
 
+def _column_chroma_above(
+    red: np.ndarray,
+    green: np.ndarray,
+    blue: np.ndarray,
+    center_x: int,
+    rim_y: int,
+) -> float:
+    top_y = max(0, rim_y - int(HEIGHT * 0.24))
+    x0 = max(0, center_x - 36)
+    x1 = min(WIDTH, center_x + 37)
+    if rim_y <= top_y:
+        return 0.0
+    region_red = red[top_y:rim_y, x0:x1]
+    region_green = green[top_y:rim_y, x0:x1]
+    region_blue = blue[top_y:rim_y, x0:x1]
+    if region_red.size == 0:
+        return 0.0
+    chroma = np.abs(region_red - region_green) + np.abs(region_green - region_blue)
+    return float(chroma.mean())
+
+
+def _mug_warm_support_below(
+    red: np.ndarray,
+    green: np.ndarray,
+    blue: np.ndarray,
+    center_x: int,
+    rim_y: int,
+) -> float:
+    y0 = rim_y
+    y1 = min(HEIGHT, rim_y + 42)
+    x0 = max(0, center_x - 28)
+    x1 = min(WIDTH, center_x + 29)
+    if y1 <= y0:
+        return 0.0
+    region_red = red[y0:y1, x0:x1]
+    region_green = green[y0:y1, x0:x1]
+    region_blue = blue[y0:y1, x0:x1]
+    warm = (region_red > region_green + 4) & (region_red > region_blue + 10)
+    return float(warm.mean())
+
+
+def _column_looks_like_monitor(
+    red: np.ndarray,
+    green: np.ndarray,
+    blue: np.ndarray,
+    center_x: int,
+    rim_y: int,
+) -> bool:
+    if center_x < int(WIDTH * MONITOR_X_MIN_RATIO) or center_x > int(WIDTH * MONITOR_X_MAX_RATIO):
+        return False
+    if rim_y > int(HEIGHT * 0.68):
+        return False
+    chroma = _column_chroma_above(red, green, blue, center_x, rim_y)
+    warm_body = _mug_warm_support_below(red, green, blue, center_x, rim_y)
+    if center_x >= int(WIDTH * 0.46) and warm_body < 0.05:
+        return True
+    if chroma >= MONITOR_CHROMA_MIN and warm_body < MONITOR_WARM_BODY_MIN:
+        return True
+    if chroma >= MONITOR_CHROMA_MIN * 1.35 and center_x >= int(WIDTH * 0.46):
+        return True
+    return False
+
+
+def _detect_warm_mug_fallback(
+    red: np.ndarray,
+    green: np.ndarray,
+    blue: np.ndarray,
+    brightness: np.ndarray,
+) -> tuple[tuple[int, int], float] | None:
+    y0, y1 = int(HEIGHT * DESK_Y_START_RATIO), int(HEIGHT * 0.80)
+    x0, x1 = int(WIDTH * 0.22), int(WIDTH * 0.58)
+    region = brightness[y0:y1, x0:x1]
+    warm = (
+        (red[y0:y1, x0:x1] > green[y0:y1, x0:x1] + 5)
+        & (red[y0:y1, x0:x1] > blue[y0:y1, x0:x1] + 12)
+        & (region >= 85)
+        & (region <= 215)
+    )
+    if not warm.any():
+        return None
+    ys, xs = np.where(warm)
+    center_x = int(np.percentile(xs, 50)) + x0
+    body_y = int(np.percentile(ys, 72)) + y0
+    rim_y = max(y0, body_y - MUG_RIM_ABOVE_BODY // 2)
+    coverage = min(float(len(xs)) / 650.0, 1.0)
+    return (center_x, rim_y), coverage
+
+
 def _collect_steam_column_candidates(
     brightness: np.ndarray,
     red: np.ndarray,
@@ -192,6 +285,8 @@ def _collect_steam_column_candidates(
         if best_local_dark < LOCAL_DARK_MIN:
             continue
         rim_y = max(0, best_body_y - MUG_RIM_ABOVE_BODY)
+        if _column_looks_like_monitor(red, green, blue, center_x, rim_y):
+            continue
         steam_above = _steam_density_above(brightness, red, green, blue, center_x, best_body_y)
         if steam_above < STEAM_ABOVE_MIN:
             continue
@@ -231,9 +326,26 @@ def detect_steam_origin(
     candidates = _collect_steam_column_candidates(brightness, red, green, blue)
     best_candidate = _pick_steam_cluster(candidates)
     if best_candidate is None:
+        mug_fallback = _detect_warm_mug_fallback(red, green, blue, brightness)
+        if mug_fallback is not None:
+            origin, coverage = mug_fallback
+            score = min(0.08 + coverage * 0.35, 0.55)
+            return origin, True, score
         return fallback, False, 0.0
     best_score, center_x, rim_y, _ = best_candidate
+    if _column_looks_like_monitor(red, green, blue, center_x, rim_y):
+        mug_fallback = _detect_warm_mug_fallback(red, green, blue, brightness)
+        if mug_fallback is not None:
+            origin, coverage = mug_fallback
+            score = min(0.08 + coverage * 0.35, 0.55)
+            return origin, True, score
+        return fallback, False, best_score
     if best_score < STEAM_CONFIDENCE_MIN:
+        mug_fallback = _detect_warm_mug_fallback(red, green, blue, brightness)
+        if mug_fallback is not None:
+            origin, coverage = mug_fallback
+            score = min(0.08 + coverage * 0.35, 0.55)
+            return origin, True, score
         return fallback, False, best_score
     return (center_x, rim_y), True, min(best_score, 1.0)
 
@@ -614,6 +726,7 @@ def encode_loop(
         "foliage_shimmer",
         "blinds_city_pulse",
         "city_haze",
+        "city_twinkles",
     }
     needs_window_mask = use_scene_effects and bool(set(scene_effects) & window_effects)
     run_window_detect = (auto_rain_enabled and rain_enabled) or needs_window_mask
@@ -717,6 +830,7 @@ def encode_loop(
                         or "dust_motes" in scene_effects
                         or "blinds_city_pulse" in scene_effects
                         or "city_haze" in scene_effects
+                        or "city_twinkles" in scene_effects
                         or "mist_drift" in scene_effects
                         or "slow_zoom" in scene_effects
                     )

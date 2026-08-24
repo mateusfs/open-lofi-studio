@@ -8,7 +8,7 @@ import subprocess
 from pathlib import Path
 
 
-DEFAULT_ANIMATE_MODE = "locked"
+DEFAULT_ANIMATE_MODE = "ambient"
 STEAM_AUTO_MIN_CONFIDENCE = 0.05
 STEAM_DISABLE_CONFIDENCE = 0.02
 
