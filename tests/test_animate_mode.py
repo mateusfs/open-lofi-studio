@@ -14,14 +14,17 @@ from animate_mode import apply_calibration_to_meta, resolve_animate_mode
 
 
 class AnimateModeTests(unittest.TestCase):
-    def test_default_is_locked(self) -> None:
-        self.assertEqual(resolve_animate_mode({}), "locked")
-        self.assertEqual(resolve_animate_mode({"mode": ""}), "locked")
-        self.assertEqual(resolve_animate_mode({"mode": "auto"}), "locked")
+    def test_default_is_ambient(self) -> None:
+        self.assertEqual(resolve_animate_mode({}), "ambient")
+        self.assertEqual(resolve_animate_mode({"mode": ""}), "ambient")
+        self.assertEqual(resolve_animate_mode({"mode": "auto"}), "ambient")
+        self.assertEqual(resolve_animate_mode({"mode": "default"}), "ambient")
 
-    def test_explicit_procedural_and_cinematic_kept(self) -> None:
+    def test_explicit_procedural_cinematic_and_locked_kept(self) -> None:
         self.assertEqual(resolve_animate_mode({"mode": "procedural"}), "procedural")
         self.assertEqual(resolve_animate_mode({"mode": "cinematic"}), "cinematic")
+        self.assertEqual(resolve_animate_mode({"mode": "locked"}), "locked")
+        self.assertEqual(resolve_animate_mode({"mode": "ambient"}), "ambient")
 
     def test_layers_force_hybrid(self) -> None:
         self.assertEqual(

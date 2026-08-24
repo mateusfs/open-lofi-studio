@@ -25,6 +25,6 @@ Ver [rules/producao-video.md](./rules/producao-video.md).
 ## Princípios
 
 - Preview antes do render completo
-- Default de animação: `locked`
+- Default de animação: `ambient`
 - Sem vapor/fumo assado na PNG de cena
 - Não commitar vídeos, WAV, ou filas privadas de canal
