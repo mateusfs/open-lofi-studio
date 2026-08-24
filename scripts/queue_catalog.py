@@ -8,9 +8,19 @@ from collections.abc import Callable
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+META_EXAMPLE_PATH = ROOT / "templates/production-meta.example.json"
 META_PATH = ROOT / "templates/production-meta.json"
 AUDIO_PATH = ROOT / "templates/audio-config.json"
 CALENDAR_PATH = ROOT / "docs/05-calendario-de-videos.md"
+
+
+def ensure_meta_catalog() -> Path:
+    if META_PATH.exists():
+        return META_PATH
+    if META_EXAMPLE_PATH.exists():
+        META_PATH.write_text(META_EXAMPLE_PATH.read_text(encoding="utf-8"), encoding="utf-8")
+        print(f"Catálogo local criado: {META_PATH.relative_to(ROOT)} (copiado do example)")
+    return META_PATH
 
 
 def number_sort_key(number: str) -> tuple[int, int, str]:
@@ -37,7 +47,10 @@ def load_audio_catalog() -> dict[str, dict]:
 
 
 def load_meta_catalog() -> list[dict]:
-    payload = json.loads(META_PATH.read_text(encoding="utf-8"))
+    meta_path = ensure_meta_catalog()
+    if not meta_path.exists():
+        return []
+    payload = json.loads(meta_path.read_text(encoding="utf-8"))
     return payload.get("catalog", [])
 
 

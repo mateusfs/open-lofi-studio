@@ -19,7 +19,8 @@ pip install -r requirements.txt
 | `generate_scene_ai.py` | Gera cena via OpenAI/Pollinations (chamado por `next.py`) |
 | `effect_mask.py` | Gera `effect-mask.png` automaticamente para hybrid |
 | `generate_scene.py` | Cena base estilizada procedural (fallback do #001) |
-| `animate_scene.py` | Loop animado procedural 20s (chuva, vapor, efeitos); modo legado |
+| `ambient_presets.py` | Presets de efeitos por series/mood (modo `ambient`, default) |
+| `animate_scene.py` | Loop animado procedural 20s (chuva, vapor, efeitos); modo legado `procedural` |
 | `animate_cinematic.py` | Loop cinematográfico 24s: Ken Burns + overlays reais (`assets/images/overlays/`) |
 | `mix_focus_audio.py` | Mix CC0 chillhop + chuva + café; exige `audio.json` único por produção |
 | `audio_registry.py` | Valida que faixas não repetem entre vídeos |
@@ -61,11 +62,22 @@ npm run outreach
 
 Gere a imagem externamente conforme `prompts/scene-base.md` e salve em `source/scene-base.png` antes de rodar o pipeline. O `npm run next` não gera cenas automaticamente.
 
+## Modos de animação (`meta.json` → `animate.mode`)
+
+| Modo | Comportamento |
+|------|----------------|
+| **`ambient`** (default) | Câmera fixa + efeitos por `series`/`mood` via `ambient_presets.py` |
+| **`procedural`** | Legado: chuva/vapor auto se `effects` vazio |
+| **`locked`** | Loop estático (PNG repetido) |
+| **`cinematic`** | Ken Burns — só se explícito |
+| **`hybrid`** | Overlays + procedural quando `animate.layers` está definido |
+
 ## Regras de áudio
 
 - **Cada vídeo = 3–4 faixas exclusivas** — não reutilizar trilhas entre produções
-- Configurar em `productions/XXX/audio.json` (catálogo com 50 playlists prontas: `templates/audio-config.json`)
-- Regenerar catálogos dos templates: `python3 scripts/build_templates_catalog.py`
+- Configurar em `productions/XXX/audio.json` (catálogo com 100 playlists: `templates/audio-config.json`)
+- Catálogo local (gitignored): `cp templates/production-meta.example.json templates/production-meta.json`
+- Regenerar catálogo completo: `python3 scripts/build_templates_catalog.py --enqueue`
 - Registro global: `assets/audio/music-registry.json`
 - Guia completo: `assets/audio/MUSIC-REGISTRY.md`
 

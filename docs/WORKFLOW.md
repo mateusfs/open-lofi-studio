@@ -2,7 +2,7 @@
 
 ## 1. Scaffold a production
 
-Copy from `templates/production-meta.json` and `templates/audio-config.json` into a local folder:
+Copy from `templates/production-meta.example.json` → `templates/production-meta.json` (local, gitignored) and use `templates/audio-config.json` when scaffolding a folder:
 
 ```text
 productions/my-session/
@@ -17,7 +17,7 @@ productions/my-session/
 
 - Generate or place `source/scene-base.png`
 - Prefer prompts without baked-in steam/smoke (vapor can be an overlay when needed)
-- Default animation mode: `locked` (static camera loop)
+- Default animation mode: `ambient` (static camera + subtle ambient effects)
 
 ## 3. Preview
 

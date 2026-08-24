@@ -48,6 +48,8 @@ assets/images/thumbnails/
 assets/prompts/
 !assets/prompts/.gitkeep
 
+templates/production-meta.json
+
 assets/production-queue.json
 assets/youtube-outreach-config.json
 assets/youtube-outreach-log.json

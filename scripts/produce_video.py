@@ -16,6 +16,7 @@ DEFAULT_AUDIO_LOOP_SECONDS = 1800
 if str(SCRIPTS) not in sys.path:
     sys.path.insert(0, str(SCRIPTS))
 
+from ambient_presets import default_ambient_loop_seconds, resolve_ambient_effects
 from animate_mode import apply_calibration_to_meta, export_loop_seam_frame, resolve_animate_mode
 from youtube_metadata import write_youtube_metadata
 
@@ -38,7 +39,7 @@ def load_meta(production_dir: Path) -> dict:
     if not meta_path.exists():
         raise FileNotFoundError(
             f"meta.json não encontrado em {production_dir}. "
-            "Execute scripts/setup_production.py ou copie templates/production-meta.json"
+            "Execute scripts/setup_production.py ou copie templates/production-meta.example.json"
         )
     return json.loads(meta_path.read_text(encoding="utf-8"))
 
@@ -130,6 +131,23 @@ def produce(
             and not no_steam
             and not has_effect_steam
         )
+
+    if animate_mode == "ambient":
+        scene_effects = resolve_ambient_effects(
+            str(meta.get("series", "")),
+            str(meta.get("mood", "")),
+            animate,
+        )
+        if animate.get("loopSeconds") is None:
+            animate = {**animate, "loopSeconds": default_ambient_loop_seconds(animate)}
+        has_effect_steam = "steam" in scene_effects
+        no_steam = animate.get("noSteam", False) or (bool(scene_effects) and not has_effect_steam)
+        steam_decay = (
+            animate.get("steamDecay", not no_steam)
+            and not no_steam
+            and not has_effect_steam
+        )
+        print(f"Efeitos ambient: {', '.join(scene_effects)}")
 
     if not skip_scene or not loop_path.exists():
         print("Step 1/4: Animating scene...")

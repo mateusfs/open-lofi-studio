@@ -2,12 +2,12 @@
 
 Open-source pipeline to generate **long-form coding ambience** videos and promotional **Shorts** — free for the community.
 
-Build immersive focus sessions with AI scenes, subtle locked-camera loops, CC0-friendly audio mixes, YouTube-ready metadata, and optional Shorts via [MoneyPrinterTurbo](https://github.com/harry0703/MoneyPrinterTurbo).
+Build immersive focus sessions with AI scenes, subtle ambient loops (static camera + mood-driven effects), CC0-friendly audio mixes, YouTube-ready metadata, and optional Shorts via [MoneyPrinterTurbo](https://github.com/harry0703/MoneyPrinterTurbo).
 
 ## Features
 
 - Long-form preview / export with FFmpeg
-- Locked-camera scene loops (no shaky Ken Burns by default)
+- Locked-camera scene loops with ambient micro-animation (no shaky Ken Burns by default)
 - Focus audio mix with continuous floor (no silent gaps)
 - Thumbnail variants + YouTube metadata helpers
 - Shorts via MoneyPrinterTurbo CLI (local materials + TTS + subtitles)
@@ -27,7 +27,9 @@ cd open-lofi-studio
 python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
 cp .env.example .env
+cp templates/production-meta.example.json templates/production-meta.json
 # edit .env if you use scene AI providers
+# expand production-meta.json locally: python scripts/build_templates_catalog.py --enqueue
 ```
 
 Create a production folder locally (never committed):
@@ -51,6 +53,7 @@ See [`tools/moneyprinterturbo/README.md`](tools/moneyprinterturbo/README.md).
 These stay on your machine (gitignored):
 
 - `productions/` — your videos and exports
+- `templates/production-meta.json` — your video catalog (copy from `.example.json`)
 - `assets/audio/`, `assets/scenes/` — media libraries
 - `.env`, OAuth credentials
 
