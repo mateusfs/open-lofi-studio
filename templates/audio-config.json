@@ -1,0 +1,38 @@
+{
+  "template": {
+    "productionId": "XXX-slug-da-producao",
+    "tracks": [
+      "assets/audio/music/track-1-slug.mp3",
+      "assets/audio/music/track-2-slug.mp3",
+      "assets/audio/music/track-3-slug.mp3"
+    ],
+    "musicVolume": 0.065,
+    "rainVolume": 0.055,
+    "cafeVolume": 0.03,
+    "whiteNoiseVolume": 0.0,
+    "noRain": false,
+    "noCafe": false,
+    "noWhiteNoise": true
+  },
+  "rules": {
+    "tracksPerVideo": "3-4",
+    "uniqueAcrossVideos": true,
+    "source": "open-lofi or other CC0 packs",
+    "registry": "assets/audio/music-registry.json"
+  },
+  "catalog": [
+    {
+      "productionId": "001-demo-rainy-desk",
+      "tracks": [
+        "assets/audio/music/track-one.mp3",
+        "assets/audio/music/track-two.mp3",
+        "assets/audio/music/track-three.mp3"
+      ],
+      "musicVolume": 0.065,
+      "rainVolume": 0.055,
+      "cafeVolume": 0.03,
+      "noRain": false,
+      "noCafe": false
+    }
+  ]
+}

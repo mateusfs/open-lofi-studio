@@ -1,0 +1,46 @@
+{
+  "template": {
+    "series": "Ambience Session",
+    "mood": "Deep Focus",
+    "durationLabel": "3 HOURS",
+    "exportBasename": "demo-ambience-session-3h",
+    "animate": {
+      "mode": "locked",
+      "loopSeconds": 30,
+      "noRain": false,
+      "steamDecay": false,
+      "seed": 42
+    }
+  },
+  "catalog": [
+    {
+      "number": "001",
+      "productionId": "001-demo-rainy-desk",
+      "series": "Ambience Session",
+      "titleEn": "Ambience Session | Rainy Desk | 3 Hours for Developers",
+      "durationSeconds": 10800,
+      "durationLabel": "3 HOURS",
+      "mood": "Rainy Desk • Deep Focus",
+      "exportBasename": "001-demo-rainy-desk-3h",
+      "animate": {
+        "mode": "locked",
+        "loopSeconds": 30,
+        "noRain": false,
+        "seed": 100
+      },
+      "scenePrompt": "Photorealistic cozy developer desk at night, large rain-streaked window, warm lamp, laptop with colorful blurred code completely unreadable, ceramic mug without steam, no people, no readable text, shallow depth of field, 16:9 aspect ratio",
+      "audio": {
+        "tracks": [
+          "track-one",
+          "track-two",
+          "track-three"
+        ],
+        "musicVolume": 0.065,
+        "rainVolume": 0.055,
+        "cafeVolume": 0.03,
+        "noRain": false,
+        "noCafe": false
+      }
+    }
+  ]
+}

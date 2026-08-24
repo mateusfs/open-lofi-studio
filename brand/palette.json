@@ -1,0 +1,80 @@
+{
+  "name": "Open Lofi Studio",
+  "colors": {
+    "midnight": {
+      "hex": "#1a1a2e",
+      "rgb": [
+        26,
+        26,
+        46
+      ],
+      "usage": "Fundo principal, thumbnails, barras inferiores"
+    },
+    "deepNavy": {
+      "hex": "#16213e",
+      "rgb": [
+        22,
+        33,
+        62
+      ],
+      "usage": "Gradientes, sombras, overlays"
+    },
+    "accentRed": {
+      "hex": "#e94560",
+      "rgb": [
+        233,
+        69,
+        96
+      ],
+      "usage": "Badge de dura\u00e7\u00e3o, destaques, CTAs"
+    },
+    "coffeeCream": {
+      "hex": "#f5e6d3",
+      "rgb": [
+        245,
+        230,
+        211
+      ],
+      "usage": "Texto quente, vapor, luzes de caf\u00e9"
+    },
+    "codeGreen": {
+      "hex": "#4ecca3",
+      "rgb": [
+        78,
+        204,
+        163
+      ],
+      "usage": "Syntax accent, detalhes tech"
+    },
+    "rainBlue": {
+      "hex": "#0f3460",
+      "rgb": [
+        15,
+        52,
+        96
+      ],
+      "usage": "Chuva, reflexos, atmosfera noturna"
+    },
+    "white": {
+      "hex": "#ffffff",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "usage": "Texto principal em thumbnails"
+    }
+  },
+  "gradients": {
+    "thumbnailOverlay": {
+      "from": "#00000000",
+      "to": "#1a1a2ecc",
+      "direction": "top-to-bottom"
+    },
+    "warmGlow": {
+      "from": "#f5e6d344",
+      "to": "#1a1a2e00",
+      "direction": "center"
+    }
+  }
+}

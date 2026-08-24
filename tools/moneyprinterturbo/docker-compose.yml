@@ -1,0 +1,29 @@
+services:
+  moneyprinterturbo-api:
+    build:
+      context: ./upstream
+      dockerfile: Dockerfile
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - ./upstream:/MoneyPrinterTurbo
+    command: ["python3", "main.py"]
+    restart: unless-stopped
+  moneyprinterturbo-webui:
+    build:
+      context: ./upstream
+      dockerfile: Dockerfile
+    ports:
+      - "127.0.0.1:8501:8501"
+    volumes:
+      - ./upstream:/MoneyPrinterTurbo
+    command:
+      [
+        "streamlit",
+        "run",
+        "./webui/Main.py",
+        "--server.address=0.0.0.0",
+        "--server.port=8501",
+        "--browser.gatherUsageStats=false",
+      ]
+    restart: unless-stopped

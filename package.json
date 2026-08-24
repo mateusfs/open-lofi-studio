@@ -1,0 +1,17 @@
+{
+  "name": "open-lofi-studio",
+  "version": "1.0.0",
+  "private": false,
+  "description": "Open Lofi Studio \u2014 open-source pipeline for free long-form ambience and Shorts",
+  "scripts": {
+    "next": ".venv/bin/python scripts/next.py",
+    "next:preview": ".venv/bin/python scripts/next.py --preview 300",
+    "next:dry": ".venv/bin/python scripts/next.py --dry-run",
+    "redo-scene": ".venv/bin/python scripts/redo_scene.py",
+    "redo-scene:preview": ".venv/bin/python scripts/redo_scene.py --preview 300",
+    "short:preview": ".venv/bin/python scripts/generate_short.py",
+    "outreach": ".venv/bin/python scripts/youtube_outreach.py",
+    "outreach:dry": ".venv/bin/python scripts/youtube_outreach.py --dry-run",
+    "outreach:auth": ".venv/bin/python scripts/youtube_outreach.py --auth"
+  }
+}
