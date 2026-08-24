@@ -124,7 +124,12 @@ def build_youtube_metadata(video: dict) -> dict:
         "chapters": chapters,
         "description": description,
         "thumbnailPrimary": "source/thumbnail.png",
+        "thumbnailShort": "source/thumbnail-b.png",
         "thumbnailAlternate": "source/thumbnail-b.png",
+        "thumbnailFormats": {
+            "landscape": "source/thumbnail.png",
+            "short": "source/thumbnail-b.png",
+        },
     }
 
 

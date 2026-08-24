@@ -25,7 +25,7 @@ pip install -r requirements.txt
 | `mix_focus_audio.py` | Mix CC0 chillhop + chuva + café; exige `audio.json` único por produção |
 | `audio_registry.py` | Valida que faixas não repetem entre vídeos |
 | `generate_ambient_audio.py` | Legado procedural (não usar em produção) |
-| `generate_thumbnail.py` | Thumbnail cena cheia + texto com sombra + badge |
+| `generate_thumbnail.py` | Thumbnail 16:9 (`thumbnail.png`) + capa Short 9:16 (`thumbnail-b.png`) |
 | `assemble_video.py` | Monta vídeo longo repetindo o loop animado (stream copy) |
 | `produce_video.py` | Pipeline completo para uma produção (lê `meta.json` + `audio.json`) |
 | `setup_production.py` | Scaffold da pasta a partir de `production-queue.json` |
