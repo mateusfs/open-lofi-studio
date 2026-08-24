@@ -69,7 +69,7 @@ tools/       MoneyPrinterTurbo helper docs
 
 If this tool helps you ship ambience videos, you can buy me a coffee:
 
-**[https://buymeacoffee.com/patrimoniun](https://buymeacoffee.com/patrimoniun)**
+**[https://buymeacoffee.com/patrimonium](https://buymeacoffee.com/patrimonium)**
 
 ## Credits
 
