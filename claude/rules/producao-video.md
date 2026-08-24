@@ -62,7 +62,7 @@
 - Loop visual imperceptível; no preview exportar `source/qa-loop-seam.png` no ponto de wrap
 - Animações correspondentes ao ambiente da cena (não só chuva/vapor genéricos)
 - Chuva visual/sonora **só se houver janela** na cena; vapor **só se houver xícara** (senão desliga, sem fallback no canto da tela)
-- Thumbnail: gerar `thumbnail.png` + `thumbnail-b.png` no preview; humano escolhe
+- Thumbnail: `thumbnail.png` = capa 16:9 do vídeo longo; `thumbnail-b.png` = capa 9:16 do Short (legenda curta tipo FLOW STATE, sem duração)
 - Thumbnail com contraste alto: fundos escuros, badge nunca em cor clara, cenas bright auto-escurecidas
 
 ## Export
@@ -75,7 +75,7 @@
 
 - Assistir 2 minutos no ponto de loop
 - Ouvir 30s no wrap do áudio + 20s no wrap do vídeo no preview
-- Conferir `source/qa-loop-seam.png` e as duas thumbnails
+- Conferir `source/qa-loop-seam.png`, `thumbnail.png` (16:9) e `thumbnail-b.png` (9:16 Short)
 - Upload privado para check Content ID
 - Preencher `checklist.md` integralmente
 - Confirmar que `audio-mix.manifest.json` lista faixas exclusivas

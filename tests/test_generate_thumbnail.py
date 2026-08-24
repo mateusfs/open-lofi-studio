@@ -10,12 +10,18 @@ sys.path.insert(0, str(SCRIPTS))
 
 from generate_thumbnail import (
     MAX_BADGE_LUMINANCE,
+    SHORT_HEIGHT,
+    SHORT_WIDTH,
+    WIDTH,
+    HEIGHT,
     badge_fill_color,
     color_luminance,
     focal_crop_bias,
+    generate_thumbnail,
     load_palette,
     palette_color,
     resolve_ambience_hook,
+    resolve_short_caption,
     series_accent,
 )
 
@@ -57,6 +63,80 @@ class ThumbnailRulesTests(unittest.TestCase):
         rain_bias = focal_crop_bias("Rainy Night Coding", "Seoul Han River • Rain Focus")
         default_bias = focal_crop_bias("Space Programming Session", "Deep Orbit")
         self.assertLess(rain_bias, default_bias)
+
+    def test_short_caption_prefers_mood_focus_phrase(self) -> None:
+        self.assertEqual(
+            resolve_short_caption("Ambience Session", "Porto Ribeira • Warm Focus"),
+            "WARM FOCUS",
+        )
+        self.assertEqual(
+            resolve_short_caption("Deep Work Sessions", "Pomodoro • 25min Cycles"),
+            "FLOW STATE",
+        )
+        self.assertEqual(
+            resolve_short_caption("Rainy Night Coding", "Tokyo Apartment • Night Focus"),
+            "RAIN SOUNDS",
+        )
+
+    def test_short_caption_never_contains_em_dash(self) -> None:
+        captions = [
+            resolve_short_caption("Ambience Session", "Porto Ribeira — Warm Focus"),
+            resolve_short_caption("Deep Work Sessions", "Night — Deep Focus", "FLOW — STATE"),
+            resolve_short_caption("Cabin Programmer", "Fireplace Snow — Cozy"),
+        ]
+        for caption in captions:
+            self.assertNotIn("—", caption)
+            self.assertNotIn("–", caption)
+            self.assertNotIn("•", caption)
+            self.assertNotIn("-", caption)
+
+    def test_short_format_is_9x16_without_duration_badge(self) -> None:
+        import tempfile
+
+        from PIL import Image
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            temp = Path(temp_dir)
+            scene = temp / "scene.png"
+            Image.new("RGB", (1920, 1080), (40, 50, 70)).save(scene)
+            output = temp / "thumbnail-b.png"
+            generate_thumbnail(
+                scene,
+                output,
+                "Deep Work Sessions",
+                "Flow State • Total Immersion",
+                "8 HOURS",
+                self.palette,
+                thumb_format="short",
+            )
+            with Image.open(output) as image:
+                self.assertEqual(image.size, (SHORT_WIDTH, SHORT_HEIGHT))
+                pixels = image.load()
+                assert pixels is not None
+                corner = pixels[SHORT_WIDTH - 40, 40]
+                self.assertLess(sum(corner[:3]) / 3, 90)
+
+    def test_landscape_format_is_16x9(self) -> None:
+        import tempfile
+
+        from PIL import Image
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            temp = Path(temp_dir)
+            scene = temp / "scene.png"
+            Image.new("RGB", (1920, 1080), (40, 50, 70)).save(scene)
+            output = temp / "thumbnail.png"
+            generate_thumbnail(
+                scene,
+                output,
+                "Ambience Session",
+                "Porto Ribeira • Warm Focus",
+                "8 HOURS",
+                self.palette,
+                thumb_format="landscape",
+            )
+            with Image.open(output) as image:
+                self.assertEqual(image.size, (WIDTH, HEIGHT))
 
 
 if __name__ == "__main__":

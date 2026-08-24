@@ -311,7 +311,6 @@ def produce(
         thumbnail_args.extend(["--hook", str(ambience_hook)])
     run_script("generate_thumbnail.py", thumbnail_args)
     if preview:
-        alt_hook = meta.get("ambienceHookB") or meta.get("ambienceHookAlt")
         thumbnail_b_args = [
             "--scene",
             str(scene_path),
@@ -325,12 +324,10 @@ def produce(
             meta.get("durationLabel", "3 HOURS"),
             "--brand-dir",
             str(ROOT / "brand"),
-            "--variant",
-            "b",
+            "--format",
+            "short",
         ]
-        if alt_hook:
-            thumbnail_b_args.extend(["--hook", str(alt_hook)])
-        elif ambience_hook:
+        if ambience_hook:
             thumbnail_b_args.extend(["--hook", str(ambience_hook)])
         run_script("generate_thumbnail.py", thumbnail_b_args)
 

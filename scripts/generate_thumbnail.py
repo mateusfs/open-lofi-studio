@@ -15,6 +15,10 @@ BAR_HEIGHT = 120
 SCENE_HEIGHT = HEIGHT - BAR_HEIGHT
 MARGIN = 24
 
+SHORT_WIDTH = 1080
+SHORT_HEIGHT = 1920
+SHORT_CAPTION_MAX_CHARS = 18
+
 YOUTUBE_RED = "#FF0000"
 YOUTUBE_RED_DARK = "#CC0000"
 MAX_BADGE_LUMINANCE = 0.38
@@ -137,14 +141,55 @@ def resolve_alternate_hook(series: str, mood: str, primary: str | None) -> str:
     return "CODING AMBIENCE"
 
 
+def sanitize_short_caption(caption: str) -> str:
+    cleaned = caption.upper()
+    for separator in ("—", "–", "-", "•", "|", "/", ":"):
+        cleaned = cleaned.replace(separator, " ")
+    cleaned = " ".join(cleaned.split())
+    return cleaned
+
+
+def resolve_short_caption(series: str, mood: str, ambience_hook: str | None = None) -> str:
+    if ambience_hook and ambience_hook.strip():
+        return sanitize_short_caption(ambience_hook)
+
+    mood_lower = mood.lower()
+    if "flow" in mood_lower or "pomodoro" in mood_lower or "immersion" in mood_lower:
+        return "FLOW STATE"
+    if "rain" in mood_lower or series == "Rainy Night Coding":
+        return "RAIN SOUNDS"
+    if "warm" in mood_lower or "cozy" in mood_lower or "cafe" in mood_lower:
+        return "WARM FOCUS"
+    if "neon" in mood_lower or "synth" in mood_lower or series == "Cyberpunk Developer Room":
+        return "NEON NIGHT"
+    if "orbit" in mood_lower or "space" in mood_lower or series == "Space Programming Session":
+        return "DEEP SPACE"
+
+    for separator in ("•", "—", "–", "|"):
+        if separator in mood:
+            tail = mood.split(separator)[-1].strip()
+            looks_like_duration = any(
+                token in tail.lower() for token in ("min", "hour", "hr", "cycle")
+            )
+            cleaned = sanitize_short_caption(tail)
+            if 2 <= len(cleaned) <= SHORT_CAPTION_MAX_CHARS and not looks_like_duration:
+                return cleaned
+            break
+
+    hook = resolve_ambience_hook(series, mood)
+    if hook:
+        return sanitize_short_caption(hook)
+    return "DEEP FOCUS"
+
+
 def focal_crop_bias(series: str, mood: str, variant: str = "a") -> float:
     mood_lower = mood.lower()
-    if variant == "b":
+    if variant == "short":
         if "rain" in mood_lower or series == "Rainy Night Coding":
-            return 0.34
+            return 0.38
         if "sunrise" in mood_lower or "morning" in mood_lower:
-            return 0.28
-        return 0.42
+            return 0.42
+        return 0.48
     if "rain" in mood_lower or series == "Rainy Night Coding":
         return 0.22
     if "sunrise" in mood_lower or "morning" in mood_lower:
@@ -164,15 +209,16 @@ def fit_scene(
     src_w, src_h = image.size
     target_ratio = target_width / target_height
     src_ratio = src_w / src_h
-    vertical_bias = focal_crop_bias(series, mood, variant)
+    bias = focal_crop_bias(series, mood, variant)
     if src_ratio > target_ratio:
         new_w = int(src_h * target_ratio)
-        left = (src_w - new_w) // 2
+        max_left = max(src_w - new_w, 0)
+        left = int(max_left * bias)
         image = image.crop((left, 0, left + new_w, src_h))
     else:
         new_h = int(src_w / target_ratio)
         max_top = max(src_h - new_h, 0)
-        top = int(max_top * vertical_bias)
+        top = int(max_top * bias)
         image = image.crop((0, top, src_w, top + new_h))
     return image.resize((target_width, target_height), Image.Resampling.LANCZOS)
 
@@ -352,7 +398,7 @@ def draw_duration_badge(
     white: tuple[int, int, int],
 ) -> None:
     label = duration_label.strip().upper()
-    badge_font = get_font(34, bold=True)
+    badge_font = get_font(42 if canvas.width == SHORT_WIDTH else 34, bold=True)
     draw = ImageDraw.Draw(canvas)
     bbox = draw.textbbox((0, 0), label, font=badge_font)
     text_w = bbox[2] - bbox[0]
@@ -361,7 +407,7 @@ def draw_duration_badge(
     pad_y = 16
     badge_w = text_w + pad_x * 2
     badge_h = text_h + pad_y * 2
-    badge_x = WIDTH - badge_w - MARGIN
+    badge_x = canvas.width - badge_w - MARGIN
     badge_y = MARGIN
     radius = badge_h // 2
     text_x = badge_x + (badge_w - text_w) // 2 - bbox[0]
@@ -403,35 +449,76 @@ def draw_bottom_bar(
     palette: dict,
     accent: tuple[int, int, int],
     secondary: tuple[int, int, int] | None,
+    bar_height: int = BAR_HEIGHT,
 ) -> None:
     midnight = hex_to_rgb(palette["colors"]["midnight"]["hex"])
     cream = hex_to_rgb(palette["colors"]["coffeeCream"]["hex"])
     white = hex_to_rgb(palette["colors"]["white"]["hex"])
+    bar_width = canvas.width
 
-    bar = Image.new("RGBA", (WIDTH, BAR_HEIGHT), (*midnight, 255))
+    bar = Image.new("RGBA", (bar_width, bar_height), (*midnight, 255))
     bar_draw = ImageDraw.Draw(bar)
-    bar_draw.rectangle((0, 0, 5, BAR_HEIGHT), fill=(*accent, 255))
+    bar_draw.rectangle((0, 0, 5, bar_height), fill=(*accent, 255))
     if secondary:
-        bar_draw.rectangle((5, 0, 8, BAR_HEIGHT), fill=(*secondary, 220))
+        bar_draw.rectangle((5, 0, 8, bar_height), fill=(*secondary, 220))
 
-    gradient = Image.new("L", (1, BAR_HEIGHT), 0)
-    for y in range(BAR_HEIGHT):
-        gradient.putpixel((0, y), int(90 * (1 - y / BAR_HEIGHT)))
-    gradient = gradient.resize((WIDTH, BAR_HEIGHT))
-    fade = Image.new("RGBA", (WIDTH, BAR_HEIGHT), (0, 0, 0, 255))
+    gradient = Image.new("L", (1, bar_height), 0)
+    for y in range(bar_height):
+        gradient.putpixel((0, y), int(90 * (1 - y / bar_height)))
+    gradient = gradient.resize((bar_width, bar_height))
+    fade = Image.new("RGBA", (bar_width, bar_height), (0, 0, 0, 255))
     fade.putalpha(gradient)
     bar.alpha_composite(fade)
 
-    series_font = get_font(40, bold=True)
-    mood_font = get_font(24, bold=False)
+    series_font = get_font(44 if bar_width == SHORT_WIDTH else 40, bold=True)
+    mood_font = get_font(28 if bar_width == SHORT_WIDTH else 24, bold=False)
     series_label = series.upper()
-    if len(series_label) > 34:
-        series_label = series_label[:31] + "..."
+    max_chars = 28 if bar_width == SHORT_WIDTH else 34
+    if len(series_label) > max_chars:
+        series_label = series_label[: max_chars - 3] + "..."
 
-    draw_glow_text(bar, (MARGIN + 8, 18), series_label, series_font, white, secondary)
-    draw_text_stroked(bar, (MARGIN + 8, 68), mood, mood_font, cream, stroke_width=2)
+    draw_glow_text(bar, (MARGIN + 8, 22), series_label, series_font, white, secondary)
+    draw_text_stroked(bar, (MARGIN + 8, 78), mood, mood_font, cream, stroke_width=2)
 
-    canvas.alpha_composite(bar, (0, SCENE_HEIGHT))
+    canvas.alpha_composite(bar, (0, canvas.height - bar_height))
+
+
+def apply_short_bottom_shade(scene: Image.Image) -> Image.Image:
+    shade = Image.new("L", (scene.width, scene.height), 0)
+    shade_draw = ImageDraw.Draw(shade)
+    shade_top = int(scene.height * 0.62)
+    for y in range(shade_top, scene.height):
+        progress = (y - shade_top) / max(scene.height - shade_top, 1)
+        shade_draw.line([(0, y), (scene.width, y)], fill=int(210 * progress**1.15))
+    shade = shade.filter(ImageFilter.GaussianBlur(18))
+    overlay = Image.new("RGBA", scene.size, (0, 0, 0, 255))
+    overlay.putalpha(shade)
+    scene.alpha_composite(overlay)
+    return scene
+
+
+def draw_short_caption(
+    canvas: Image.Image,
+    caption: str,
+    white: tuple[int, int, int],
+    glow: tuple[int, int, int] | None,
+) -> None:
+    label = caption.strip().upper()
+    font_size = 92 if len(label) <= 10 else 78 if len(label) <= 14 else 64
+    font = get_font(font_size, bold=True)
+    draw = ImageDraw.Draw(canvas)
+    bbox = draw.textbbox((0, 0), label, font=font)
+    text_w = bbox[2] - bbox[0]
+    text_h = bbox[3] - bbox[1]
+    text_x = (canvas.width - text_w) // 2 - bbox[0]
+    text_y = canvas.height - int(canvas.height * 0.16) - text_h // 2 - bbox[1]
+
+    glow_color = glow or white
+    glow_layer = Image.new("RGBA", canvas.size, (0, 0, 0, 0))
+    glow_draw = ImageDraw.Draw(glow_layer)
+    glow_draw.text((text_x, text_y), label, font=font, fill=(*glow_color, 200))
+    canvas.alpha_composite(glow_layer.filter(ImageFilter.GaussianBlur(18)))
+    draw_text_stroked(canvas, (text_x, text_y), label, font, white, stroke_width=4)
 
 
 def generate_thumbnail(
@@ -443,10 +530,32 @@ def generate_thumbnail(
     palette: dict,
     ambience_hook: str | None = None,
     variant: str = "a",
+    thumb_format: str = "landscape",
 ) -> None:
     accent, secondary = series_accent(series, palette)
     badge_fill = badge_fill_color(series, palette)
     white = palette_color(palette, "white")
+    is_short = thumb_format == "short"
+
+    if is_short:
+        caption = resolve_short_caption(series, mood, ambience_hook)
+        scene = fit_scene(
+            scene_path,
+            SHORT_WIDTH,
+            SHORT_HEIGHT,
+            series,
+            mood,
+            variant="short",
+        )
+        scene = enhance_scene(scene)
+        scene = apply_vignette(scene)
+        scene = apply_top_shade(scene.convert("RGBA"))
+        scene = apply_short_bottom_shade(scene)
+        draw_short_caption(scene, caption, white, secondary or accent)
+        output.parent.mkdir(parents=True, exist_ok=True)
+        scene.convert("RGB").save(output, format="PNG", optimize=True)
+        return
+
     hook = ambience_hook or resolve_ambience_hook(series, mood)
     if variant == "b":
         hook = ambience_hook or resolve_alternate_hook(series, mood, hook)
@@ -463,7 +572,7 @@ def generate_thumbnail(
 
     canvas = Image.new("RGBA", (WIDTH, HEIGHT), (0, 0, 0, 255))
     canvas.alpha_composite(scene, (0, 0))
-    draw_bottom_bar(canvas, series, mood, palette, accent, secondary)
+    draw_bottom_bar(canvas, series, mood, palette, accent, secondary, bar_height=BAR_HEIGHT)
 
     output.parent.mkdir(parents=True, exist_ok=True)
     canvas.convert("RGB").save(output, format="PNG", optimize=True)
@@ -478,6 +587,13 @@ def main() -> None:
     parser.add_argument("--duration", default="3 HOURS")
     parser.add_argument("--hook", default=None, help="Badge de ambience (ex: RAIN SOUNDS)")
     parser.add_argument("--variant", default="a", choices=["a", "b"])
+    parser.add_argument(
+        "--format",
+        dest="thumb_format",
+        default="landscape",
+        choices=["landscape", "short"],
+        help="landscape=16:9 YouTube longo; short=9:16 capa de Shorts",
+    )
     parser.add_argument("--brand-dir", type=Path, default=Path("brand"))
     args = parser.parse_args()
 
@@ -491,6 +607,7 @@ def main() -> None:
         palette,
         ambience_hook=args.hook,
         variant=args.variant,
+        thumb_format=args.thumb_format,
     )
     print(f"Thumbnail saved: {args.output}")
 

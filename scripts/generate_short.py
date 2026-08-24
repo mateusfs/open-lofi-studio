@@ -192,13 +192,18 @@ def prepare_materials(
     scene = source / "scene-base.png"
     loop = source / "scene-loop.mp4"
     thumb = source / "thumbnail.png"
+    thumb_short = source / "thumbnail-b.png"
     prepared: list[Path] = []
 
     if scene.exists():
         dest = materials_dir / "scene-base.png"
         shutil.copy2(scene, dest)
         prepared.append(dest)
-    if thumb.exists():
+    if thumb_short.exists():
+        dest = materials_dir / "thumbnail-short.png"
+        shutil.copy2(thumb_short, dest)
+        prepared.append(dest)
+    elif thumb.exists():
         dest = materials_dir / "thumbnail.png"
         shutil.copy2(thumb, dest)
         prepared.append(dest)
@@ -371,9 +376,15 @@ def generate_short(
         )
         shutil.copy2(final, output)
 
+    short_thumb = production_dir / "source" / "thumbnail-b.png"
+    if short_thumb.exists():
+        export_thumb = output_dir / f"{basename}-mpt-9x16-thumb.png"
+        shutil.copy2(short_thumb, export_thumb)
+
     manifest = {
         "productionId": production_dir.name,
         "output": str(output),
+        "thumbnail": str(short_thumb) if short_thumb.exists() else None,
         "engine": "moneyprinterturbo-cli",
         "voice": voice_name,
         "script": script,
@@ -381,7 +392,8 @@ def generate_short(
         "mptFinal": str(final),
         "note": (
             "Short gerado pelo CLI oficial do MoneyPrinterTurbo: "
-            "script → Edge TTS → legendas → materiais locais → BGM."
+            "script → Edge TTS → legendas → materiais locais → BGM. "
+            "Capa 9:16 em source/thumbnail-b.png."
         ),
     }
     (output_dir / f"{basename}-mpt-9x16.manifest.json").write_text(
